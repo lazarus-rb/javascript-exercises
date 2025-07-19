@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function add7(num) {
+            return num + 7;
+        }
+
+        function multiply(mult1, mult2) {
+            return mult1 * mult2;
+        }
+
+        function capitalize(str) {
+            if(str == '' || str == null) return 'Please enter a word to capitalize';
+            return str[0].toUpperCase() + str.slice(1).toLowerCase();
+        }
+        
+        function lastLetter(str) {
+            if(str == '' || str == null) return 'Please enter a word to capitalize';
+            const lastLetterIndex = str.length - 1;
+            return console.log(str[lastLetterIndex]);
+        }
+
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function getComputerChoice() {
+            const choice = Math.random() * 3;
+            let choiceStr = '';
+            if(choice < 1) {
+                choiceStr = "Rock";
+            }
+            if (choice > 2) {
+                choiceStr = "Paper";
+            }
+            else choiceStr = "Scissors";
+
+            return choiceStr;
+        }
+
+        function getHumanChoice() {
+            let choice = prompt("Choose your move? Rock, paper, or scissors");
+            return choice;
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            console.log('Computer chose ' + computerChoice + "!");
+            console.log('Human chose ' + humanChoice + "!");
+
+
+            if(humanChoice.toLowerCase() == 'rock') {
+                if(computerChoice.toLowerCase() == 'rock') {
+                    console.log("Draw");
+                }
+                if(computerChoice.toLowerCase() == 'paper') {
+                    computerScore++;
+                    console.log("Computer wins!");
+                }
+                if(computerChoice.toLowerCase() == 'scissors') {
+                    humanScore++;
+                    console.log("Human wins!");
+                }
+
+            }
+
+            else if(humanChoice.toLowerCase() == 'paper') {
+                if(computerChoice.toLowerCase() == 'paper') {
+                    console.log("Draw");
+                }
+                if(computerChoice.toLowerCase() == 'scissors') {
+                    computerScore++;
+                    console.log("Computer wins!");
+                }
+                if(computerChoice.toLowerCase() == 'rock') {
+                    humanScore++;
+                    console.log("Human wins!");
+                }
+            }
+            
+            else if(humanChoice.toLowerCase() == 'scissors') {
+                if(computerChoice.toLowerCase() == 'scissors') {
+                    console.log("Draw");
+                }
+                if(computerChoice.toLowerCase() == 'rock') {
+                    computerScore++;
+                    console.log("Computer wins!");
+                }
+                if(computerChoice.toLowerCase() == 'paper') {
+                    humanScore++;
+                    console.log("Human wins!");
+                }
+            }
+
+            let scoreTally = "Human score is: " + humanScore + " Computer score is: " + computerScore;
+            return console.log(scoreTally);
+
+        }
+
+        function playGame() {
+            for(let i = 0; i < 5; i++) {
+                let humanSelection = getHumanChoice();
+                let computerSelection = getComputerChoice();
+                playRound(humanSelection, computerSelection);
+            }
+                
+        }
+
+        playGame();
+
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
